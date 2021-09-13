@@ -66,11 +66,11 @@
                 ("00" + date.getDate()).slice(-2) + "/" +
                 ("00" + (date.getMonth() + 1)).slice(-2) + " " +
                 ("00" + date.getHours()).slice(-2) + ":" +
-                ("00" + date.getMinutes()).slice(-2);
-            return dateStr;
+                ("00" + date.getMinutes()).slice(-2)
+            return dateStr
         }
 
-        connection.on("ReceiveMessage", (data) => {
+        connection.on("ReceiveMessage", (data) => {            
             var position = data.userName === username ? "text-right" : "text-left";
             var alert = data.userName === username ? "alert-info" : "alert-secondary";
 
@@ -93,7 +93,7 @@
 
             var messageDt = document.createElement("small");
             messageDt.className = "text-info";
-            messageDt.textContent = formatDate(data.datetime);
+            messageDt.textContent = formatDate(data.date_time);
 
             messageAlert.appendChild(messageAlertMessage);
             messageCol.appendChild(messageUser);
