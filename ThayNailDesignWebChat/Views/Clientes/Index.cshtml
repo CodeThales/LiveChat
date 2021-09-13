@@ -1,4 +1,8 @@
 ﻿@model List<Cliente>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+
+
 @{
     var service = ViewBag.selectedService;
 }
@@ -17,7 +21,10 @@
 <br />
 <h2 class="mb-3">Lista de Clientes</h2>
 
-<a class="btn btn-success" asp-controller="Clientes" asp-action="Create">Adicionar Cliente</a>
+@if (SignInManager.IsSignedIn(User))
+{
+    <a class="btn btn-success" asp-controller="Clientes" asp-action="Create">Adicionar Cliente</a>
+}
 
 
 @if (ViewBag.sorted)
@@ -33,21 +40,21 @@ else
 @if (TempData["Adicionado"] != null)
 {
     <div class="alert alert-success" role="alert">
-        <p>@TempData["Adicionado"]</p>
+        <p style="color:black">@TempData["Adicionado"]</p>
     </div>
 }
 
 @if (TempData["Excluido"] != null)
 {
     <div class="alert alert-danger" role="alert">
-        <p>@TempData["Excluido"]</p>
+        <p style="color:black">@TempData["Excluido"]</p>
     </div>
 }
 
 @if (TempData["Atualizado"] != null)
 {
     <div class="alert alert-info" role="alert">
-        <p>@TempData["Atualizado"]</p>
+        <p style="color:black">@TempData["Atualizado"]</p>
     </div>
 }
 <br />
@@ -85,11 +92,19 @@ else
                     <td>@Html.DisplayFor(Model => cliente.Nome)</td>
                     <td>@Html.DisplayFor(Model => cliente.Telefone)</td>
                     <td>@Html.DisplayFor(Model => cliente.Nasc)</td>
-                    <td>
-                        <a asp-action="Read" asp-route-id="@cliente.Id">Visualizar |</a>
-                        <a asp-action="Update" asp-route-id="@cliente.Id"> Atualizar |</a>
-                        <a asp-action="Confirm" asp-route-id="@cliente.Id"> Excluir</a>
-                    </td>
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <td>
+                            <a asp-action="Read" asp-route-id="@cliente.Id">Visualizar |</a>
+                            <a asp-action="Update" asp-route-id="@cliente.Id"> Atualizar |</a>
+                            <a asp-action="Confirm" asp-route-id="@cliente.Id"> Excluir</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td><span>É necessário estar logado para executar ações.</span></td>
+                    }
                 </tr>
             }
         </tbody>

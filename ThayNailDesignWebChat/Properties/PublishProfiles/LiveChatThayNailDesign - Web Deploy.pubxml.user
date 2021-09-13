@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4R9EAIWes0akI+WQ/qkJgQAAAAACAAAAAAAQZgAAAAEAACAAAAA2XDJwQ2ekfosGYSfLTGbDzTwAeQlQabrJuW9iM/lAMQAAAAAOgAAAAAIAACAAAAB02L7nl6oUcTv5r0mSP9TOSaMEfFrVQdFchSoAL7p+74AAAAA4LAUMlRULKHGMWLpnZpGPCCTM0elPcdbicp1xQoYZqERuAl5BnztMd6lGEyscOSmigFh+h7aXaxIVp346t0s3oVyHEkMlQggH18WjFBvAAZCgCMcpUj3LJWUMajWPHkejQrddDqPAecY+nivRRcNXxHUEpD9tebsDyluxixiN30AAAAAHL13mpsmMy06omCI4Z9UF3oQ/whJYEbF6gpUu9OWJoL0C7D/9ukBM+w9vWJTZBwzHbK60Hig16nFJ+/zmFBsS</EncryptedPassword>
+    <History>True|2021-09-13T19:29:53.2637491Z;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="ThayNailDesign.Data.ThayNailDesignContext">
+      <Value>Data Source=tcp:thaynaildesignlivechatdbserver.database.windows.net,1433%3bInitial Catalog=ThayNailDesignLiveChat_db%3bUser Id=ThalesRibeiro%40thaynaildesignlivechatdbserver%3bPassword=ThayLiveChat123!Senha</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

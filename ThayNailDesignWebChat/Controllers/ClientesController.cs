@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ThayNailDesign.Services;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ThayNailDesign.Controllers
 {
@@ -49,12 +50,14 @@ namespace ThayNailDesign.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Cliente cliente)
         {            
@@ -81,6 +84,7 @@ namespace ThayNailDesign.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public IActionResult Update(int? id)
         {
             Cliente cliente = _service.GetSingle(id);           
@@ -89,6 +93,7 @@ namespace ThayNailDesign.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public IActionResult Update(Cliente cliente)
         {
@@ -104,6 +109,7 @@ namespace ThayNailDesign.Controllers
             }
         }
 
+        [Authorize]
         public IActionResult Delete(int? id)
         {            
             //ViewBag.msg = "Cliente excluído com sucesso!";
@@ -118,6 +124,7 @@ namespace ThayNailDesign.Controllers
             }
         }
 
+        [Authorize]
         public IActionResult Confirm(int? id)
         {
             Cliente cliente = _service.GetSingle(id);
