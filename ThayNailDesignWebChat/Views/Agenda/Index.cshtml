@@ -1,0 +1,55 @@
+﻿@model List<Agenda>
+
+<h3 class="mt-4 mb-4">Atendimentos agendados</h3>
+
+<a class="btn btn-success mb-4" asp-controller="Agenda" asp-action="create">Agendar novo atendimento!</a>
+
+@if (TempData["Adicionado"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <p>@TempData["Adicionado"]</p>
+    </div>
+}
+
+@if (TempData["Excluido"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <p>@TempData["Excluido"]</p>
+    </div>
+}
+
+@if (TempData["Atualizado"] != null)
+{
+    <div class="alert alert-info" role="alert">
+        <p>@TempData["Atualizado"]</p>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(Model => Model.First().id)</th>
+            <th>@Html.DisplayNameFor(Model => Model.First().cliente.Nome)</th>
+            <th>@Html.DisplayNameFor(Model => Model.First().servico.Nome)</th>
+            <th>@Html.DisplayNameFor(Model => Model.First().data)</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Agenda agenda in Model)
+        {
+            <tr>
+                <td> @Html.DisplayFor(Model => agenda.id) </td>
+                <td> @Html.DisplayFor(Model => agenda.cliente.Nome) </td>
+                <td> @Html.DisplayFor(Model => agenda.servico.Nome) </td>
+                <td> @Html.DisplayFor(Model => agenda.data) </td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@agenda.id">Atualizar</a> |
+                    <a asp-action="Confirm" asp-route-id="@agenda.id">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,45 @@
+﻿@model Cliente
+
+@if (Model == null)
+{
+    <h1>Não existe cliente com este registro!</h1>
+}
+else
+{
+    <h2>Visualizando Cliente @Model.Nome</h2>
+    <br />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(Model => Model.Id)</th>
+                <th>@Html.DisplayNameFor(Model => Model.Nome)</th>
+                <th>@Html.DisplayNameFor(Model => Model.Telefone)</th>
+                <th>@Html.DisplayNameFor(Model => Model.Nasc)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(Model => Model.Id)</td>
+                <td>@Html.DisplayFor(Model => Model.Nome)</td>
+                <td>@Html.DisplayFor(Model => Model.Telefone)</td>
+                <td>@Html.DisplayFor(Model => Model.Nasc)</td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    
+    @if (Model.Agendas.Count > 0)
+    {
+        <hr />
+        <h3 class="mb-3">Atendimentos Agendados</h3>
+        @foreach (Agenda a in Model.Agendas)
+        {
+            <p><strong>Especialidade: </strong>@Html.DisplayFor(x => a.servico.Nome)</p>
+            <p><strong>Data e Hora: </strong>@Html.DisplayFor(x => a.data)</p>
+            <p><strong>Observações: </strong>@Html.DisplayFor(x => a.descricao)</p>
+        }
+    }
+}
+<a class="btn btn-info" asp-controller="Clientes" asp-action="Index">Voltar</a>
+
