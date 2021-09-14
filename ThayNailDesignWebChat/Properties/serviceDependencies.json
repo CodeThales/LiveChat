@@ -1,17 +1,10 @@
 {
   "dependencies": {
-    "mssql1": {
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:ThayNailDesignContext"
-    },
     "signalr1": {
       "type": "signalr",
       "connectionId": "",
       "suggestion": "true",
       "ignored": "true"
-    },
-    "secrets1": {
-      "type": "secrets"
     }
   }
 }
