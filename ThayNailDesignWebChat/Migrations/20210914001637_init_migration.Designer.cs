@@ -10,8 +10,8 @@ using ThayNailDesign.Data;
 namespace ThayNailDesign.Migrations
 {
     [DbContext(typeof(ThayNailDesignContext))]
-    [Migration("20210910022936_init_chat")]
-    partial class init_chat
+    [Migration("20210914001637_init_migration")]
+    partial class init_migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -289,6 +289,15 @@ namespace ThayNailDesign.Migrations
                     b.Property<DateTime>("Date_time")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("TargetId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TargetName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TargetUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -300,6 +309,8 @@ namespace ThayNailDesign.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TargetUserId");
 
                     b.HasIndex("UserId");
 
@@ -412,11 +423,17 @@ namespace ThayNailDesign.Migrations
 
             modelBuilder.Entity("ThayNailDesign.Models.Message", b =>
                 {
+                    b.HasOne("ThayNailDesign.Models.AppUser", "TargetUser")
+                        .WithMany()
+                        .HasForeignKey("TargetUserId");
+
                     b.HasOne("ThayNailDesign.Models.AppUser", "App_user")
                         .WithMany("Messages")
                         .HasForeignKey("UserId");
 
                     b.Navigation("App_user");
+
+                    b.Navigation("TargetUser");
                 });
 
             modelBuilder.Entity("ThayNailDesign.Models.Servico", b =>
