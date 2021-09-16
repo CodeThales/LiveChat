@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA4R9EAIWes0akI+WQ/qkJgQAAAAACAAAAAAAQZgAAAAEAACAAAABMxPRH27TnSCcymrrm/mtrxwswEU+3356RyCWIGTZvcgAAAAAOgAAAAAIAACAAAADhZLPQvJTj0tiupUZkJFjAhEI/RuDQwCYXd8rp84pOu4AAAABfGh01UdnRRkJl3LHIPodhD/a0Ydn5b44iwmIIcpbPOTqzIEuNNK3i3ydYC64WHfZmVLLtw8DfNRYS1DKvJVJ70W8RK0ouwJAHA9SzjhXwQnBmk15aRVxhB0nDFmjAhs6nUiDLaZbY6MoEjVQOPCSwnuF6ohu9k4fTskkSjD65skAAAACD3XCF7dPG7ZTqIPTWT6qkJldBLX9GEtl7GbUbP/yLporzlQ7Iccu6sIfNvYmVs6FgrJSZGqlQJOjxXmVH09cH</EncryptedPassword>
+    <History>True|2021-09-15T23:40:23.7984645Z;False|2021-09-15T20:38:24.8232487-03:00;False|2021-09-15T20:36:00.0319748-03:00;False|2021-09-15T20:30:33.3750601-03:00;False|2021-09-15T20:14:06.4057327-03:00;False|2021-09-15T19:41:33.9718886-03:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="ThayNailDesignContext">
+      <Value>Data Source=%28localdb%29\MSSQLLocalDB%3bInitial Catalog=aspnet-53bc9b9d-9d6a-45d4-8429-2a2761773502%3bIntegrated Security=True%3bConnect Timeout=30%3bEncrypt=False%3bTrustServerCertificate=False%3bApplicationIntent=ReadWrite%3bMultiSubnetFailover=False</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

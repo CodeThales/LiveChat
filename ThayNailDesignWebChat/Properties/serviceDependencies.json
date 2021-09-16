@@ -1,13 +1,11 @@
 {
   "dependencies": {
-    "signalr1": {
-      "type": "signalr",
-      "connectionId": "",
-      "suggestion": "true",
-      "ignored": "true"
-    },
     "secrets1": {
       "type": "secrets"
+    },
+    "signalr1": {
+      "type": "signalr",
+      "connectionId": "Azure__SignalR__ConnectionString"
     },
     "mssql1": {
       "type": "mssql",

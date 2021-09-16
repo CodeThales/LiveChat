@@ -11,79 +11,7 @@ GO
 BEGIN TRANSACTION;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210809195524_first_migration')
-BEGIN
-    CREATE TABLE [Cliente] (
-        [Id] int NOT NULL IDENTITY,
-        [Nome] nvarchar(max) NOT NULL,
-        [Telefone] nvarchar(max) NOT NULL,
-        [Nasc] datetime2 NOT NULL,
-        CONSTRAINT [PK_Cliente] PRIMARY KEY ([Id])
-    );
-END;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210809195524_first_migration')
-BEGIN
-    CREATE TABLE [Servico] (
-        [Id] int NOT NULL IDENTITY,
-        [Nome] nvarchar(max) NOT NULL,
-        [Preco] float NOT NULL,
-        [Duracao] int NOT NULL,
-        [ClienteId] int NULL,
-        CONSTRAINT [PK_Servico] PRIMARY KEY ([Id]),
-        CONSTRAINT [FK_Servico_Cliente_ClienteId] FOREIGN KEY ([ClienteId]) REFERENCES [Cliente] ([Id]) ON DELETE NO ACTION
-    );
-END;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210809195524_first_migration')
-BEGIN
-    CREATE TABLE [Agenda] (
-        [id] int NOT NULL IDENTITY,
-        [clienteId] int NOT NULL,
-        [servicoId] int NOT NULL,
-        [data] datetime2 NOT NULL,
-        [descricao] nvarchar(max) NULL,
-        CONSTRAINT [PK_Agenda] PRIMARY KEY ([id]),
-        CONSTRAINT [FK_Agenda_Cliente_clienteId] FOREIGN KEY ([clienteId]) REFERENCES [Cliente] ([Id]) ON DELETE CASCADE,
-        CONSTRAINT [FK_Agenda_Servico_servicoId] FOREIGN KEY ([servicoId]) REFERENCES [Servico] ([Id]) ON DELETE CASCADE
-    );
-END;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210809195524_first_migration')
-BEGIN
-    CREATE INDEX [IX_Agenda_clienteId] ON [Agenda] ([clienteId]);
-END;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210809195524_first_migration')
-BEGIN
-    CREATE INDEX [IX_Agenda_servicoId] ON [Agenda] ([servicoId]);
-END;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210809195524_first_migration')
-BEGIN
-    CREATE INDEX [IX_Servico_ClienteId] ON [Servico] ([ClienteId]);
-END;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210809195524_first_migration')
-BEGIN
-    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20210809195524_first_migration', N'5.0.9');
-END;
-GO
-
-COMMIT;
-GO
-
-BEGIN TRANSACTION;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE TABLE [AspNetRoles] (
         [Id] nvarchar(450) NOT NULL,
@@ -95,7 +23,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE TABLE [AspNetUsers] (
         [Id] nvarchar(450) NOT NULL,
@@ -119,7 +47,19 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
+BEGIN
+    CREATE TABLE [Cliente] (
+        [Id] int NOT NULL IDENTITY,
+        [Nome] nvarchar(max) NOT NULL,
+        [Telefone] nvarchar(max) NOT NULL,
+        [Nasc] datetime2 NOT NULL,
+        CONSTRAINT [PK_Cliente] PRIMARY KEY ([Id])
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE TABLE [AspNetRoleClaims] (
         [Id] int NOT NULL IDENTITY,
@@ -132,7 +72,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE TABLE [AspNetUserClaims] (
         [Id] int NOT NULL IDENTITY,
@@ -145,7 +85,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE TABLE [AspNetUserLogins] (
         [LoginProvider] nvarchar(128) NOT NULL,
@@ -158,7 +98,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE TABLE [AspNetUserRoles] (
         [UserId] nvarchar(450) NOT NULL,
@@ -170,7 +110,7 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE TABLE [AspNetUserTokens] (
         [UserId] nvarchar(450) NOT NULL,
@@ -183,115 +123,129 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE TABLE [Message] (
         [Id] int NOT NULL IDENTITY,
         [UserName] nvarchar(max) NULL,
+        [TargetName] nvarchar(max) NULL,
         [Text] nvarchar(max) NOT NULL,
         [Date_time] datetime2 NOT NULL,
         [UserId] nvarchar(450) NULL,
+        [TargetId] nvarchar(max) NULL,
+        [TargetUserId] nvarchar(450) NULL,
         CONSTRAINT [PK_Message] PRIMARY KEY ([Id]),
+        CONSTRAINT [FK_Message_AspNetUsers_TargetUserId] FOREIGN KEY ([TargetUserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION,
         CONSTRAINT [FK_Message_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION
     );
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
+BEGIN
+    CREATE TABLE [Servico] (
+        [Id] int NOT NULL IDENTITY,
+        [Nome] nvarchar(max) NOT NULL,
+        [Preco] float NOT NULL,
+        [Duracao] int NOT NULL,
+        [ClienteId] int NULL,
+        CONSTRAINT [PK_Servico] PRIMARY KEY ([Id]),
+        CONSTRAINT [FK_Servico_Cliente_ClienteId] FOREIGN KEY ([ClienteId]) REFERENCES [Cliente] ([Id]) ON DELETE NO ACTION
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
+BEGIN
+    CREATE TABLE [Agenda] (
+        [id] int NOT NULL IDENTITY,
+        [clienteId] int NOT NULL,
+        [servicoId] int NOT NULL,
+        [data] datetime2 NOT NULL,
+        [descricao] nvarchar(max) NULL,
+        CONSTRAINT [PK_Agenda] PRIMARY KEY ([id]),
+        CONSTRAINT [FK_Agenda_Cliente_clienteId] FOREIGN KEY ([clienteId]) REFERENCES [Cliente] ([Id]) ON DELETE CASCADE,
+        CONSTRAINT [FK_Agenda_Servico_servicoId] FOREIGN KEY ([servicoId]) REFERENCES [Servico] ([Id]) ON DELETE CASCADE
+    );
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
+BEGIN
+    CREATE INDEX [IX_Agenda_clienteId] ON [Agenda] ([clienteId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
+BEGIN
+    CREATE INDEX [IX_Agenda_servicoId] ON [Agenda] ([servicoId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     EXEC(N'CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL');
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     EXEC(N'CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL');
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
-BEGIN
-    CREATE INDEX [IX_Message_UserId] ON [Message] ([UserId]);
-END;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910022936_init_chat')
-BEGIN
-    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20210910022936_init_chat', N'5.0.9');
-END;
-GO
-
-COMMIT;
-GO
-
-BEGIN TRANSACTION;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910231631_private_chate')
-BEGIN
-    ALTER TABLE [Message] ADD [TargetId] nvarchar(max) NULL;
-END;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910231631_private_chate')
-BEGIN
-    ALTER TABLE [Message] ADD [TargetName] nvarchar(max) NULL;
-END;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910231631_private_chate')
-BEGIN
-    ALTER TABLE [Message] ADD [TargetUserId] nvarchar(450) NULL;
-END;
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910231631_private_chate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     CREATE INDEX [IX_Message_TargetUserId] ON [Message] ([TargetUserId]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910231631_private_chate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
-    ALTER TABLE [Message] ADD CONSTRAINT [FK_Message_AspNetUsers_TargetUserId] FOREIGN KEY ([TargetUserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE NO ACTION;
+    CREATE INDEX [IX_Message_UserId] ON [Message] ([UserId]);
 END;
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210910231631_private_chate')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
+BEGIN
+    CREATE INDEX [IX_Servico_ClienteId] ON [Servico] ([ClienteId]);
+END;
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20210914001637_init_migration')
 BEGIN
     INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20210910231631_private_chate', N'5.0.9');
+    VALUES (N'20210914001637_init_migration', N'5.0.9');
 END;
 GO
 

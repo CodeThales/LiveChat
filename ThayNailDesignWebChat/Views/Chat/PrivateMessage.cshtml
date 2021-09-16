@@ -35,7 +35,7 @@
                 <div class="col-md-12 @position">
                     <small class="text-dark">@message.UserName</small>
                     <div class="alert mb-0 @alert" role="alert">
-                        <span class="d-block">@message.Text</span>
+                        <span class="d-block" style="word-wrap: break-word;">@message.Text</span>
                     </div>
                     <small class="text-info">@message.Date_time.ToString("dd/MM HH:mm")</small>
                 </div>
@@ -74,7 +74,9 @@
                     UserName: username,
                     TargetName: targetname
                 }
-                console.log(data);
+
+                //Essa expressão regular vai testar esse texto verificando se no inicio do texto (^) existe espaço em branco (\s) na quantidade de 1 ou mais (+) e que depois disso o texto termina ($).
+                if (document.getElementById("MessageText").value == "" || document.getElementById("MessageText").value.match(/^(\s)+$/)) return;
 
                 document.getElementById("MessageText").value = ""
                 connection.invoke("sendPrivateMessage", data).catch(function (err) {
@@ -118,11 +120,12 @@
 
             var messageAlertMessage = document.createElement("div");
             messageAlertMessage.className = "d-block";
+            messageAlertMessage.style.cssText = "word-wrap: break-word;";
             messageAlertMessage.innerHTML = data.text;
 
             var messageDt = document.createElement("small");
             messageDt.className = "text-info";
-            messageDt.textContent = formatDate(data.datetime);
+            messageDt.textContent = formatDate(data.date_time);
 
             messageAlert.appendChild(messageAlertMessage);
             messageCol.appendChild(messageUser);

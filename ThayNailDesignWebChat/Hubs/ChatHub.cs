@@ -66,7 +66,7 @@ namespace ThayNailDesign.Hubs
             var currentName = Context.User.Identity.Name;
             var targetName = m.TargetName;
 
-            var group = currentName.Length > targetName.Length ? $"{targetName}{currentName}" : $"{currentName}{targetName}";
+            var group = String.Compare(currentName.ToUpper(), targetName.ToUpper()) > 0 ? $"{targetName}{currentName}" : $"{currentName}{targetName}";
             await Clients.Group(group).SendAsync("PrivateMessage", returnMessage);
         }
 
@@ -75,14 +75,14 @@ namespace ThayNailDesign.Hubs
         public Task JoinPrivate(string targetName)
         {
             var currentName = Context.User.Identity.Name;
-            var group = currentName.Length > targetName.Length ? $"{targetName}{currentName}" : $"{currentName}{targetName}";
+            var group = String.Compare(currentName.ToUpper(), targetName.ToUpper()) > 0 ? $"{targetName}{currentName}" : $"{currentName}{targetName}";
             return Groups.AddToGroupAsync(Context.ConnectionId, group);
         }
 
         public Task LeavePrivate(string targetName)
         {
             var currentName = Context.User.Identity.Name;
-            var group = currentName.Length > targetName.Length ? $"{targetName}{currentName}" : $"{currentName}{targetName}";
+            var group = String.Compare(currentName.ToUpper(), targetName.ToUpper()) > 0 ? $"{targetName}{currentName}" : $"{currentName}{targetName}";
             return Groups.RemoveFromGroupAsync(Context.ConnectionId, group);
         }
     }

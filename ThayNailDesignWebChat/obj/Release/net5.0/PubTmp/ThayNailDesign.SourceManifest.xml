@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
-  <IisApp path="D:\O Talito\Documents\Cursos\Programação e Desenvolvimento\Blue EdTech\Modulo 04 - BackEnd\LiveChat\ThayNailDesignWebChat\obj\Release\net5.0\PubTmp\Out\" />
-  <dbfullsql path="D:\O Talito\Documents\Cursos\Programação e Desenvolvimento\Blue EdTech\Modulo 04 - BackEnd\LiveChat\ThayNailDesignWebChat\obj\Release\net5.0\PubTmp\EFSQLScripts\ThayNailDesign.Data.ThayNailDesignContext.sql" />
+  <IisApp path="D:\O Talito\Documents\Cursos\Programação e Desenvolvimento\Blue EdTech\Modulo 04 - BackEnd\Aula21 dia 13092021\ThayNailDesignWebChat\obj\Release\net5.0\PubTmp\Out\" />
 </sitemanifest>

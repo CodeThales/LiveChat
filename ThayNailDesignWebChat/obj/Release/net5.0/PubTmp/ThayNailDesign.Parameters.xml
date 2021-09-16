@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="LiveChatThayNailDesign" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\O\ Talito\\Documents\\Cursos\\Programação\ e\ Desenvolvimento\\Blue\ EdTech\\Modulo\ 04\ -\ BackEnd\\LiveChat\\ThayNailDesignWebChat\\obj\\Release\\net5\.0\\PubTmp\\Out\\$" />
-  </parameter>
-  <parameter name="ThayNailDesign.Data.ThayNailDesignContext" description="" value="Data Source=tcp:thaynaildesignlivechatdbserver.database.windows.net,1433;Initial Catalog=ThayNailDesignLiveChat_db;User Id=ThalesRibeiro@thaynaildesignlivechatdbserver;Password=ThayLiveChat123!Senha" tags="dbfullsql">
-    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^D:\\O\ Talito\\Documents\\Cursos\\Programação\ e\ Desenvolvimento\\Blue\ EdTech\\Modulo\ 04\ -\ BackEnd\\LiveChat\\ThayNailDesignWebChat\\obj\\Release\\net5\.0\\PubTmp\\EFSQLScripts\\ThayNailDesign\.Data\.ThayNailDesignContext\.sql$" />
+  <parameter name="IIS Web Application Name" description="" value="ThayNailDesign20210915192735" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\O\ Talito\\Documents\\Cursos\\Programação\ e\ Desenvolvimento\\Blue\ EdTech\\Modulo\ 04\ -\ BackEnd\\Aula21\ dia\ 13092021\\ThayNailDesignWebChat\\obj\\Release\\net5\.0\\PubTmp\\Out\\$" />
   </parameter>
 </parameters>
